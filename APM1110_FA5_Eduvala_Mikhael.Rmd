@@ -1,0 +1,304 @@
+---
+title: "APM1110_FA5_Eduvala_Mikhael"
+author: "Mikhael S. Eduvala"
+date: "2026-09-14"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## General Instructions
+
+#### 1. Read each problem carefully and write clear, step-by-step solutions for all items.
+
+#### 2. Show all complete calculations, formulas used, and final answers. Round off final numerical values to four decimal places unless specified otherwise.
+
+#### 3. Format your completed work into a single PDF file or a well-documented Markdown/LaTeX file.
+
+#### 4. Create a designated public repository on your GitHub account named APM1110-FA5.
+
+#### 5. Upload your file(s) to the repository main branch. Ensure all rendered images/formulasdisplay correctly in your repository’s README.md file or committed PDF.
+
+#### 6. Submit the public URL link of your GitHub repository to the course LMS portal before
+
+## 1. Discrete Random Variables
+
+#### A discrete random variable X has the following probability mass function (PMF):
+
+$$P(X=x)=
+\begin{cases}
+k(2x+1), & x=1, 2, 3, 4\\
+0, & \text{otherwise}
+\end{cases}$$
+
+#### (a) Find the value of the constant k.
+
+For a probability mass function, everything must add up to 1.
+
+$$ k(2(1)+1) + k(2(2)+1) + k(2(3)+1) + k(2(4)+1) = 1 $$ $$ k(3 + 5 + 7 + 9)=1 $$ $$ 24k = 1 $$ Therefore, the value of the constant k is: $$ k = 1/24 $$
+
+#### (b) Compute the expected value E[X] and the variance Var(X).
+
+The expected value of a discrete random variable is
+
+$$E[X]=\sum xP(X=x)$$
+
+Since, $$P(X=x)=k(2x+1)$$ Then, $$ E[X]=\sum_{x=1}^{4}k(2x+1) $$
+
+Substitute k = 1/24, $$E[X]=1/24[1(3)+2(5)+3(7)+4(9)]$$ $$E[X]=\frac{3+10+21+36}{24}$$ $$ E[X] = \frac{70}{24} $$ Therefore, the expected value is: $$E[X]=2.9167$$
+
+#### Now, For the Variance Var(X):
+
+Formula: $$Var(X)=E[X^2]-(E[X])^2$$
+
+Calculate $E[X^2]$:
+
+$E[X^2]=\frac{1}{24} [1^2(3)+2^2(5)+3^2(7)+4^2(9)]$
+
+$E[X^2]=\frac{3+20+63+144}{24}$
+
+$E[X^2]=\frac{230}{24}$
+
+$E[X^2]=9.5833$
+
+Then,
+
+$Var(X)=(9.5833)-(2.9167)^2$
+
+$Var(X)= 9.5833 - 8.5071 = 1.0764$
+
+Therefore, $(b) E[X] = 2.9167 \quad\quad and \quad\quad Var(X) = 1.0764$
+
+#### (c) Calculate: $P(X \ge 3)$
+
+We need the probabilities for $X=3$ and $X=4$.
+
+$$P(X\geq3)=P(X=3)+P(X=4)$$
+
+$$=k(2(3)+1)+k(2(4)+1)$$
+
+$$=k(7+9)$$
+
+$$=16k$$
+
+Since $k=\frac{1}{24}$,
+
+$$P(X\geq3)=\frac{16}{24}$$
+
+$$P(X\geq3)=0.6667$$
+
+## 2. Binomial Distribution
+
+#### An IT system detects that roughly 8% of incoming external requests are malicious. In a random sample of 20 requests:
+
+Binomial Distribution should be used as each request can either be malicious or not malicious.
+
+$$X\sim Binomial(n=20,p=0.08)$$ $$n=20,\qquad p=0.08,\qquad 1-p=0.92$$ Binomial Formula: $$P(X=x)=\binom{n}{x}p^x(1-p)^{n-x}$$
+
+#### (a) What is the probability that exactly 2 requests are malicious?
+
+We need $P(X=2)$
+
+Using the formula, $P(X=2)=\binom{20}{2}(0.08)^2(0.92)^{18}$
+
+$P(X=2)=0.2711$
+
+#### (b) What is the probability that at least 3 requests are malicious?
+
+We need $P(X=3)$
+
+Use a complement, $P(X\geq3)=1-P(X\leq2)$
+
+$P(X\geq3)=1-[P(X=0)+P(X=1)+P(X=2)]$
+
+using the binomial distribution:
+
+$P(X\geq3)=1-P(X\leq2)$
+
+$P(X=3) = 0.2121$
+
+#### (c) Determine the mean and standard deviation of the number of malicious requests.
+
+For a binomial distribution,
+
+$$\mu=np$$
+
+Therefore,
+
+$$\mu=(20)(0.08)$$
+
+$$\mu=1.6$$
+
+The standard deviation is
+
+$$\sigma=\sqrt{np(1-p)}$$
+
+Therefore,
+
+$$\sigma=\sqrt{(20)(0.08)(0.92)}$$
+
+$$\sigma=\sqrt{1.472}$$
+
+$$\sigma=1.2133$$
+
+## 3. Poisson Distribution
+
+#### A server receives an average of 4.5 web traffic hits per minute. Assuming the arrival rate follows a Poisson process:
+
+Poisson distribution:
+
+For one minute,
+
+$$\lambda=4.5$$
+
+The Poisson probability formula is
+
+$$P(X=x)=\frac{e^{-\lambda}\lambda^x}{x!}$$
+
+#### (a) Find the probability of receiving exactly 6 hits in a given minute.
+
+We need
+
+$$P(X=6)$$
+
+Using the formula:
+
+$$P(X=6)=\frac{e^{-4.5}(4.5)^6}{6!}$$
+
+$$P(X=6)=0.1281$$
+
+#### (b) Find the probability of receiving at most 2 hits in a given minute.
+
+$$P(X\leq2)$$
+
+$$P(X\leq2)=P(X=0)+P(X=1)+P(X=2)$$ Then,
+
+$$P(X\leq2)=e^{-4.5}\left(1+4.5+\frac{4.5^2}{2!}\right)$$ $$P(X\leq2)= 0.1736$$
+
+#### (c) Calculate the probability of receiving more than 10 hits in a 2-minute interval.
+
+There is an average of 4.5 hits per minute
+
+Now, for a 2-minute interval, the new Poisson mean is:
+
+$$\lambda=4.5(2)=9$$ Let $Y$ represent the number of hits in 2 minutes.
+
+Therefore,
+
+$$Y\sim Poisson(9)$$
+
+We need
+
+$$P(Y>10)$$
+
+Using the complement,
+
+$$P(Y>10)=1-P(Y\leq10)$$ $$P(Y>10)= 0.2940$$
+
+## 4. Continuous Probability & Normal Distribution
+
+#### The processing time for a complex database query is normally distributed with a mean μ = 120 milliseconds and a standard deviation σ = 15 milliseconds.
+
+Therefore, $$X\sim N(120,15^2)$$
+
+Conversion of a value to standard normal value:
+
+$$z=\frac{x-\mu}{\sigma}$$
+
+#### (a) What proportion of queries take longer than 135 milliseconds to process?
+
+$$P(X>135)$$ z-score: $$z=\frac{135-120}{15}$$ $$z=\frac{15}{15}=1$$ Therefore, $$P(X>135)=P(Z>1)$$ $$P(Z>1)=1-P(Z\leq1)$$ $$P(Z>1)=0.1587$$ $$P(Z>1)=P(X>135)= 0.1587$$
+
+Therefore, approximately 15.87% of the queries take longer than 135 milliseconds.
+
+#### (b) Find the probability that a randomly chosen query takes between 100 and 130 milliseconds.
+
+$$P(100<X<130)$$
+
+Get the $z$ scores:
+
+z-score (100 milliseconds): $$z_1=\frac{100-120}{15}$$
+
+$$z_1=-1.3333$$
+
+z-score (130 milliseconds): $$z_2=\frac{130-120}{15}$$
+
+$$z_2=0.6667$$ Now that we got the two z-scores, $$P(100<X<130)=P(-1.3333<Z<0.6667)$$
+
+This can be calculated as
+
+$$P(X<130)-P(X<100)$$ $$P(100<X<130)= 0.6563$$
+
+#### (c) Find the 95th percentile of query processing times.
+
+The 95th percentile is the value x s.t.:
+
+$$P(X\leq x)=0.95$$
+
+For a standard normal distribution,
+
+$$z=1.6449$$
+
+We use
+
+$$x=\mu+z\sigma$$
+
+Therefore,
+
+$$x=120+(1.6449)(15)$$
+
+$$x=144.6728$$
+
+# FINAL ANSWERS:
+
+1.  Discrete Random Variables
+
+<!-- -->
+
+(a) $k=\boxed{0.0417}$
+
+(b) $E[X]=\boxed{0.0417}$
+
+(c) $Var(X)=\boxed{1.0764}$
+
+(d) $P(X\ge3)=\boxed{0.6667}$
+
+<!-- -->
+
+2.  Binomial Distribution
+
+<!-- -->
+
+(a) $P(X=2)=\boxed{0.2711}$
+
+(b) $P(X\ge3)=\boxed{0.2121}$
+
+(c) $Mean = \boxed{1.6000}$
+
+(d) $Standard\, Deviation = \boxed{1.2133}$
+
+<!-- -->
+
+3.  Poisson Distribution
+
+<!-- -->
+
+(a) $P(X=6)=\boxed{0.1281}$
+
+(b) $P(X\le2)=\boxed{0.1736}$
+
+(c) $P(X>10)=\boxed{0.2940}$
+
+<!-- -->
+
+4.  Continuous Probability and Normal Distribution
+
+<!-- -->
+
+(a) $P(X>135)=\boxed{0.1587}$
+
+(b) $P(100<X<130)=\boxed{0.6563}$
+
+(c) $95th\,\, percentile=\boxed{144.6728\,\,ms}$
